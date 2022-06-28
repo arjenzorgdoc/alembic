@@ -31,7 +31,7 @@ if TYPE_CHECKING:
     from sqlalchemy.engine.cursor import CursorResult
     from sqlalchemy.engine.cursor import LegacyCursorResult
     from sqlalchemy.engine.reflection import Inspector
-    from sqlalchemy.sql.dml import Update
+    from sqlalchemy.sql.dml import UpdateBase
     from sqlalchemy.sql.elements import ClauseElement
     from sqlalchemy.sql.elements import ColumnElement
     from sqlalchemy.sql.elements import quoted_name
@@ -196,7 +196,7 @@ class DefaultImpl(metaclass=ImplMeta):
 
     def execute(
         self,
-        sql: Union["Update", "TextClause", str],
+        sql: Union["UpdateBase", "TextClause", str],
         execution_options: None = None,
     ) -> None:
         self._exec(sql, execution_options)
